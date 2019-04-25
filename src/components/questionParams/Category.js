@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, FormControl, InputLabel, Select, OutlinedInput, MenuItem } from '@material-ui/core'
+import { FormControl, FormLabel, Select, MenuItem } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
 const CATS = [
@@ -30,16 +30,10 @@ const CATS = [
 ]
 
 const styles = {
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    formControl: {
-      margin: 10,
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: 10 * 2,
+    select: {
+      width: "80%",
+      marginLeft: "10%",
+      marginRight: "10%"
     }
   };
 
@@ -48,25 +42,19 @@ const listCategories = (cat) => {
         <MenuItem value={cat.id} key={cat.id}>{cat.name}</MenuItem>
     )
 }
-const Category = ({classes, state, dispatch}) => {
-    console.log(state)
+const Category = ({classes, category, dispatch}) => {
     return(
-    <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="outlined-age-simple">
-            Category
-        </InputLabel>
+    <FormControl className={classes.select}>
+        <FormLabel component="legend">Category</FormLabel>
         <Select
-            value={state.category}
+            value={category}
             onChange={(event) => {
                 dispatch({type: "SET_CATEGORY", value:event.target.value})
             }}
-            input={
-                <OutlinedInput
-                    labelWidth={20}
-                    name="age"
-                    id="outlined-age-simple"
-                />
-            }
+            inputProps={{
+                name: "category",
+                id: "category"
+            }}
         >
             {CATS.map(listCategories)}
         </Select>
