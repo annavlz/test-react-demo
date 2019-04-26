@@ -83,6 +83,4 @@ const App = ({classes}) => {
 export default withStyles(styles)(App);
 export const Colors = COLORS
 
-
-// {"response_code":0,"results":[{"category":"Entertainment: Books","type":"multiple","difficulty":"easy","question":"What is the title of the first Sherlock Holmes book by Arthur Conan Doyle?","correct_answer":"A Study in Scarlet","incorrect_answers":["The Sign of the Four","A Case of Identity","The Doings of Raffles Haw"]}]}
 // {"response_code":0,"results":[{"category":"Entertainment: Books","type":"boolean","difficulty":"easy","question":"The &quot;Berenstein Bears&quot; is the correct spelling of the educational children&#039;s book series&#039; name.","correct_answer":"False","incorrect_answers":["True"]}]}
