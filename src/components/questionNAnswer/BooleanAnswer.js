@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Fab } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -14,11 +14,15 @@ const styles = {
 }
 const BooleanAnswer = ({classes, questionData, setSelectedAnswer}) => {
     const [answerValue, setAnswerValue] = useState()
-    console.log(answerValue)
+    const isCorrect = questionData.correct_answer === answerValue
+    const selectedAnswer = answerValue ? {isCorrect} : null
+    useEffect(() => {
+        setSelectedAnswer(selectedAnswer)
+    }, [answerValue])
     return (
         <div className={classes.container}>
-            <Fab className={classes.button} color="primary" size="large" onClick={() => setAnswerValue(true)}>TRUE</Fab>
-            <Fab className={classes.button} color="secondary" size="large" onClick={() => setAnswerValue(false)}>FALSE</Fab>
+            <Fab className={classes.button} color="primary" size="large" onClick={() => setAnswerValue("True")}>TRUE</Fab>
+            <Fab className={classes.button} color="secondary" size="large" onClick={() => setAnswerValue("False")}>FALSE</Fab>
         </div>
 )
 }

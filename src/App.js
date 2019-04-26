@@ -50,7 +50,7 @@ const reducer = (state, action) => {
 }
 
 const getQuestion = async ({state, dispatch}) => {
-  Axios.get(`https://opentdb.com/api.php?amount=1&category=${state.category}&difficulty=${state.difficulty}&type=boolean`)
+  Axios.get(`https://opentdb.com/api.php?amount=1&category=${state.category}&difficulty=${state.difficulty}`)
   .then((response) => {
     dispatch({type: "SET_RESPONSE", value: response.data.results[0]})
   })
@@ -82,5 +82,3 @@ const App = ({classes}) => {
 
 export default withStyles(styles)(App);
 export const Colors = COLORS
-
-// {"response_code":0,"results":[{"category":"Entertainment: Books","type":"boolean","difficulty":"easy","question":"The &quot;Berenstein Bears&quot; is the correct spelling of the educational children&#039;s book series&#039; name.","correct_answer":"False","incorrect_answers":["True"]}]}
