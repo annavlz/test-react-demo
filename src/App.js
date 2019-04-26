@@ -50,7 +50,7 @@ const reducer = (state, action) => {
 }
 
 const getQuestion = async ({state, dispatch}) => {
-  Axios.get("https://opentdb.com/api.php?amount=1&category=10&difficulty=easy&type=multiple")
+  Axios.get(`https://opentdb.com/api.php?amount=1&category=${state.category}&difficulty=${state.difficulty}`)
   .then((response) => {
     dispatch({type: "SET_RESPONSE", value: response.data.results[0]})
   })
