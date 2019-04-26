@@ -7,7 +7,7 @@ const getAnswersList = (answers) => {
         <FormControlLabel
             value={answer.index}
             control={<Radio color="primary" />}
-            label={answer.text}
+            label={answer.text.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}
             labelPlacement="end"
             key={answer.sortIndex}
         />

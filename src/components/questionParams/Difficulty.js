@@ -8,8 +8,7 @@ const styles = {
         margin: "10%"
     },
     radio: {
-        marginLeft: 43,
-        marginRight: 43
+        marginLeft: 130
     }
 
 }

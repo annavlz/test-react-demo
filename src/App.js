@@ -13,8 +13,8 @@ const styles = {
   },
   question: {
     width: "10%",
-    marginTop: 50,
-    marginBottom: 50,
+    marginTop: 20,
+    marginBottom: 20,
     marginLeft: "45%",
     marginRight: "45%",
     textAlign: "center"
@@ -50,7 +50,7 @@ const reducer = (state, action) => {
 }
 
 const getQuestion = async ({state, dispatch}) => {
-  Axios.get(`https://opentdb.com/api.php?amount=1&category=${state.category}&difficulty=${state.difficulty}`)
+  Axios.get(`https://opentdb.com/api.php?amount=1&category=${state.category}&difficulty=${state.difficulty}&type=boolean`)
   .then((response) => {
     dispatch({type: "SET_RESPONSE", value: response.data.results[0]})
   })
