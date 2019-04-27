@@ -4,8 +4,8 @@ import { Paper, Typography, Button } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 import QuestionParams from './components/questionParams/QuestionParams'
 import QuestionNAnswer from './components/questionNAnswer/QuestionNAnswer'
-import reducer from './reducer'
-import INIT_STATE from './initState'
+import reducer from './helpers/reducer'
+import INIT_STATE from './helpers/initState'
 
 const styles = {
   container: {
@@ -35,7 +35,7 @@ const App = ({classes}) => {
   return (
     <div style={{backgroundColor: state.bgcolor, height: "100vh"}}>
       <Paper className={classes.container} >
-        <Typography align="center" gutterBottom inline={false} variant="h1">TRIVIA</Typography>
+        <Typography align="center" gutterBottom inline={false} variant="h4">TRIVIA</Typography>
         <QuestionParams category={state.category} difficulty={state.difficulty} dispatch={dispatch} />
       </Paper>
       <Button 

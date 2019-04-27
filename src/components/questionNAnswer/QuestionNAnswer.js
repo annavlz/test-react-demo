@@ -3,7 +3,7 @@ import { FormControl, FormLabel } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 import MultipleAnswer from './MultipleAnswer'
 import BooleanAnswer from './BooleanAnswer'
-import Colors from '../../colors'
+import Colors from '../../helpers/colors'
 
 const styles = {
     radiogroup: {
@@ -11,7 +11,8 @@ const styles = {
         margin: "10%"
     },
     legend: {
-        fontSize: 20
+        fontSize: 20,
+        textAlign: "center"
     }
 }
 
@@ -29,7 +30,7 @@ const QuestionNAnswer = ({classes, questionData, dispatch}) => {
             </FormLabel>
             {questionData.type === "multiple" ? 
                 (<MultipleAnswer questionData={questionData} setSelectedAnswer={setSelectedAnswer}/>)
-                : (<BooleanAnswer questionData={questionData} setSelectedAnswer={setSelectedAnswer}/>)
+                : (<BooleanAnswer correctAnswer={questionData.correct_answer} setSelectedAnswer={setSelectedAnswer}/>)
             }
         </FormControl>
     )}

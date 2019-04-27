@@ -1,10 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React, {memo} from 'react'
 import { Fab } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
-    button: {
-        margin:50
+    buttonRight: {
+        display: "inline-block",
+        float: "right"
+    },
+    buttonLeft: {
+        display: "inline-block",
+        float: "left"
     },
     container: {
         width: "50%",
@@ -12,19 +17,29 @@ const styles = {
         marginRight: "25%"
     }
 }
-const BooleanAnswer = ({classes, questionData, setSelectedAnswer}) => {
-    const [answerValue, setAnswerValue] = useState()
-    const isCorrect = questionData.correct_answer === answerValue
-    const selectedAnswer = answerValue ? {isCorrect} : null
-    useEffect(() => {
-        setSelectedAnswer(selectedAnswer)
-    }, [answerValue, setSelectedAnswer, selectedAnswer])
-    
+
+const BooleanAnswer = ({classes, correctAnswer, setSelectedAnswer}) => {
     return (
         <div className={classes.container}>
-            <Fab className={classes.button} color="primary" size="large" onClick={() => setAnswerValue("True")}>TRUE</Fab>
-            <Fab className={classes.button} color="secondary" size="large" onClick={() => setAnswerValue("False")}>FALSE</Fab>
+            <div className={classes.buttonLeft}>
+            <Fab 
+                color="primary" 
+                size="large" 
+                onClick={() => setSelectedAnswer({isCorrect: correctAnswer === "True"})}
+            >
+                TRUE
+            </Fab>
+            </div>
+            <div className={classes.buttonRight}>
+            <Fab  
+                color="secondary" 
+                size="large" 
+                onClick={() => setSelectedAnswer({isCorrect: correctAnswer === "False"})}
+            >
+                FALSE
+            </Fab>
+            </div>
         </div>
 )
 }
-export default withStyles(styles)(BooleanAnswer)
+export default withStyles(styles)(memo(BooleanAnswer))

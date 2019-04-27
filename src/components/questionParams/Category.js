@@ -34,6 +34,9 @@ const styles = {
       width: "80%",
       marginLeft: "10%",
       marginRight: "10%"
+    },
+    legend: {
+        textAlign: "center"
     }
   };
 
@@ -45,7 +48,7 @@ const listCategories = (cat) => {
 const Category = ({classes, category, dispatch}) => {
     return(
     <FormControl className={classes.select}>
-        <FormLabel component="legend">Category</FormLabel>
+        <FormLabel component="legend" className={classes.legend}>Category</FormLabel>
         <Select
             value={category}
             onChange={(event) => {
