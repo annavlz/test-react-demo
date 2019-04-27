@@ -4,6 +4,8 @@ import { Paper, Typography, Button } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 import QuestionParams from './components/questionParams/QuestionParams'
 import QuestionNAnswer from './components/questionNAnswer/QuestionNAnswer'
+import reducer from './reducer'
+import INIT_STATE from './initState'
 
 const styles = {
   container: {
@@ -21,34 +23,6 @@ const styles = {
   }
 };
 
-const COLORS = {
-  new: "white",
-  wrong: "red",
-  correct: "green"
-}
-
-const INIT_STATE = {
-  category: 9,
-  difficulty: "medium",
-  questionData: {},
-  bgcolor: COLORS.new
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "SET_CATEGORY":
-      return {...state, category: action.value}
-    case "SET_DIFFICULTY":
-      return {...state, difficulty: action.value}
-    case "SET_RESPONSE": 
-      return { ...state, questionData: action.value, bgcolor: COLORS.new}
-    case "SET_BGCOLOR":
-      return { ...state, bgcolor: action.value}
-    default:
-      return state
-  }
-}
-
 const getQuestion = async ({state, dispatch}) => {
   Axios.get(`https://opentdb.com/api.php?amount=1&category=${state.category}&difficulty=${state.difficulty}`)
   .then((response) => {
@@ -58,7 +32,6 @@ const getQuestion = async ({state, dispatch}) => {
 
 const App = ({classes}) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE)
-
   return (
     <div style={{backgroundColor: state.bgcolor, height: "100vh"}}>
       <Paper className={classes.container} >
@@ -81,4 +54,3 @@ const App = ({classes}) => {
   )}
 
 export default withStyles(styles)(App);
-export const Colors = COLORS

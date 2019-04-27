@@ -18,7 +18,8 @@ const BooleanAnswer = ({classes, questionData, setSelectedAnswer}) => {
     const selectedAnswer = answerValue ? {isCorrect} : null
     useEffect(() => {
         setSelectedAnswer(selectedAnswer)
-    }, [answerValue])
+    }, [answerValue, setSelectedAnswer, selectedAnswer])
+    
     return (
         <div className={classes.container}>
             <Fab className={classes.button} color="primary" size="large" onClick={() => setAnswerValue("True")}>TRUE</Fab>

@@ -1,8 +1,9 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo, useEffect, memo } from 'react'
 import { FormControlLabel, RadioGroup, Radio } from '@material-ui/core'
 
 
 const getAnswersList = (answers) => {
+    console.log("LIST")
     return answers.map((answer) => (
         <FormControlLabel
             value={answer.index}
@@ -19,26 +20,27 @@ const enhanceAnswers = (questionData) => questionData.incorrect_answers
     .concat({text: questionData.correct_answer, isCorrect: true, index: "0", sortIndex: Math.random()})
     .sort((a, b) => a.sortIndex - b.sortIndex)
 
-
-export default ({questionData, setSelectedAnswer}) => {
+export default memo(({questionData, setSelectedAnswer }) => {
     const [enhancedAnswers, setEnhancedAnswers] = useState([])
     const [answerIndex, setAnswerIndex] = useState()
-    const selectedAnswer = enhancedAnswers.find((answer) => answer.index === answerIndex)
+
     useMemo(() => {
+        console.log("SET ENHANCED ANWSERS")
         setEnhancedAnswers(enhanceAnswers(questionData))
     }, [questionData])
 
-    useEffect(() => {
-        setSelectedAnswer(selectedAnswer)
-    }, [answerIndex])
-    
+    const update = (value) => {
+        setAnswerIndex(value)
+        setSelectedAnswer(enhancedAnswers.find((answer) => answer.index === value))
+    }
 
+    console.log("MA", answerIndex)
     return (<RadioGroup
         aria-label="answer"
         name="answer"
         value={answerIndex}
-        onChange={(event) => setAnswerIndex(event.target.value)}
+        onChange={(event) => update(event.target.value)}
     >
      {getAnswersList(enhancedAnswers)}   
     </RadioGroup>)
-}
+})

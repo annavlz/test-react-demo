@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import Category from './Category'
 import Difficulty from './Difficulty'
 
@@ -11,5 +11,5 @@ const QuestionParams = ({category, difficulty, dispatch}) => {
     )
 }
 
-export default QuestionParams
+export default memo(QuestionParams)
 
