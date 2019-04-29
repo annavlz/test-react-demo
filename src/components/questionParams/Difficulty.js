@@ -23,8 +23,8 @@ const Difficulty = ({classes, difficulty, dispatch}) => {
             <FormLabel component="legend" className={classes.legend}>Difficulty</FormLabel>
             <RadioGroup
                 className={classes.radio}
-                aria-label="position"
-                name="position"
+                aria-label="difficulty"
+                name="difficulty"
                 value={difficulty}
                 onChange={(event) => dispatch({type: "SET_DIFFICULTY", value: event.target.value})}
                 row
