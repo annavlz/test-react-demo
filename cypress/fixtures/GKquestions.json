@@ -1,0 +1,10 @@
+{"response_code":0,
+  "results":[{
+    "category":"General Knowledge",
+    "type":"multiple",
+    "difficulty":"easy",
+    "question":"Customized question by Cecilia, my fav flower is??",
+    "correct_answer":"Lily",
+    "incorrect_answers":["Rose","Sunflower","Carnation"]
+  }]
+}

@@ -33,7 +33,7 @@ const getQuestion = async ({state, dispatch}) => {
 const App = ({classes}) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE)
   return (
-    <div style={{backgroundColor: state.bgcolor, height: "100vh"}}>
+    <div id='background' style={{backgroundColor: state.bgcolor, height: "100vh"}}>
       <Paper className={classes.container} >
         <Typography align="center" gutterBottom inline={false} variant="h4">TRIVIA</Typography>
         <QuestionParams category={state.category} difficulty={state.difficulty} dispatch={dispatch} />

@@ -24,6 +24,7 @@ const Difficulty = ({classes, difficulty, dispatch}) => {
             <RadioGroup
                 className={classes.radio}
                 aria-label="difficulty"
+                id="difficulty-block"
                 name="difficulty"
                 value={difficulty}
                 onChange={(event) => dispatch({type: "SET_DIFFICULTY", value: event.target.value})}
