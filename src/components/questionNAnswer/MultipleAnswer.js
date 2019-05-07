@@ -3,9 +3,10 @@ import { List, ListItem, Button } from '@material-ui/core'
 
 
 const getAnswersList = ({answers, setAnswer}) => {
-    return answers.map((answer) => (
+    return answers.map((answer, i) => (
         <ListItem key={answer.sortIndex} > 
             <Button
+                id={i}
                 variant="contained"
                 onClick={() => setAnswer(answer.sortIndex)}
                 style={{width:"100%"}}
