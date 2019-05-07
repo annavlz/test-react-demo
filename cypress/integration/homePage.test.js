@@ -15,17 +15,13 @@ describe('Check home page' , () => {
         cy.contains('General Knowledge').should('exist');
     })
 
-    // it('Select value from category list', () => {
-    //     cy.contains('General Knowledge').select('Sports');
-    //         // .should('have.value','21')
-    //         // .should('have.name','category')
-    // })
-
     it('Check Difficulty buttons', () => {
         cy.contains('Difficulty').should('exist');
-        cy.contains('Easy').should('exist');
-        cy.contains('Medium').should('exist');
-        cy.contains('Hard').should('exist');
+        cy.get('#difficulty-block').within(() =>{
+            cy.contains('Easy').should('exist');
+            cy.contains('Medium').should('exist');
+            cy.contains('Hard').should('exist');
+        })
     })
 
     it('Check the difficulty option', () => {
