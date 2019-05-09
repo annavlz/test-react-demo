@@ -1,3 +1,10 @@
+# Please fell free to fork and make a pull request
+If you want to try funcitonal components, hooks and testing with cypress - look at the issues, assign one and create a pull request. 
+I will review and comment, so you can learn. 
+
+
+# How to run this project (all standard Create React App)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
